@@ -1,7 +1,8 @@
-﻿{
+{
   "userSecretsId": "aspnet-WebApp-5ed75653-89e7-4838-934a-82fd11d99e29",
 
   "dependencies": {
+    "MediatR": "2.1.0",
     "Microsoft.ApplicationInsights.AspNetCore": "1.0.0",
     "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0",
     "Microsoft.AspNetCore.Diagnostics": "1.0.0",
@@ -15,7 +16,7 @@
     "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
     "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
     "Microsoft.AspNetCore.StaticFiles": "1.0.0",
-    "Microsoft.EntityFrameworkCore.SqlServer": "1.0.0",
+    "Microsoft.EntityFrameworkCore.SqlServer": "1.0.1",
     "Microsoft.EntityFrameworkCore.SqlServer.Design": {
       "version": "1.0.0",
       "type": "build"
@@ -57,7 +58,13 @@
   },
 
   "frameworks": {
-    "net461": { }
+    "net461": {
+      "dependencies": {
+        "DataContext": {
+          "target": "project"
+        }
+      }
+    }
   },
 
   "buildOptions": {
