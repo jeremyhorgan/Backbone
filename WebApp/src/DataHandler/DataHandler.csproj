@@ -53,10 +53,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataContext\DataContext.csproj">
-      <Project>{599e9bb4-ed86-48b3-9264-1c8955d5d8dc}</Project>
-      <Name>DataContext</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DataModel\DataModel.csproj">
       <Project>{f8d7077c-2926-4d6d-a260-111b229173b3}</Project>
       <Name>DataModel</Name>
