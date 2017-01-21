@@ -9,18 +9,6 @@ namespace Lanner.Backbone.Data.Repository.Test
     [TestClass]
     public class TestProjectRepository
     {
-        [ClassInitializeAttribute]
-        public void ClassInitialize()
-        {
-
-        }
-
-        [ClassCleanup]
-        public void ClassCleanup()
-        {
-
-        }
-
         [TestInitialize]
         public void TestInitialize()
         {
@@ -34,7 +22,7 @@ namespace Lanner.Backbone.Data.Repository.Test
             
             // Act 
 
-            // Assert
+            // AssertHelper
         }
     }
 }

@@ -5,7 +5,10 @@ namespace Lanner.Backbone.Data.Context
 {
     public class BackboneDbContext : DbContext
     {
-        public DbSet<Project> Projects { get; set; }
+        public BackboneDbContext(DbContextOptions<BackboneDbContext> options)
+            : base(options)
+        {            
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -16,7 +19,7 @@ namespace Lanner.Backbone.Data.Context
             MapProjectEntity(modelBuilder);
         }
 
-        private void MapApplicationTypeEntity(ModelBuilder modelBuilder)
+        private static void MapApplicationTypeEntity(ModelBuilder modelBuilder)
         {
             // tblApplicationType => Model.ApplicationType
             modelBuilder.Entity<ApplicationType>().ToTable("tblApplicationType", "dbo");
@@ -26,12 +29,13 @@ namespace Lanner.Backbone.Data.Context
                 entity.Property(e => e.Name).HasColumnName("ApplicationType_Name").HasMaxLength(60);
                 entity.Property(e => e.Sort).HasColumnName("ApplicationType_Sort");
                 entity.Property(e => e.HasLayoutView).HasColumnName("ApplicationType_HasLayoutView");
-                entity.Property(e => e.DateCreated).HasColumnName("Project_DateCreated");
-                entity.Property(e => e.DateModified).HasColumnName("Project_DateModified");
+                entity.Property(e => e.DateCreated).HasColumnName("ApplicationType_DateCreated");
+                entity.Property(e => e.DateModified).HasColumnName("ApplicationType_DateModified");
+                entity.HasMany(e => e.Applications);
             });
         }
 
-        private void MapApplicationEntity(ModelBuilder modelBuilder)
+        private static void MapApplicationEntity(ModelBuilder modelBuilder)
         {
             // tblApplication => Model.Application
             modelBuilder.Entity<Application>().ToTable("tblApplication", "dbo");
@@ -46,15 +50,16 @@ namespace Lanner.Backbone.Data.Context
                 entity.Property(e => e.IconFilename).HasColumnName("Application_IconFilename");                
                 entity.Property(e => e.IsTemplate).HasColumnName("Application_IsTemplate");
                 entity.Property(e => e.IsPublished).HasColumnName("Application_Published");
-                entity.Property(e => e.IsArchived).HasColumnName("Project_Archived");
+                entity.Property(e => e.IsArchived).HasColumnName("Application_Archived");
                 entity.Property(e => e.ModelFile).HasColumnName("Application_ModelFile");
                 entity.Property(e => e.ValidationScript).HasColumnName("Application_ValidationScript");
-                entity.Property(e => e.DateCreated).HasColumnName("Project_DateCreated");
-                entity.Property(e => e.DateModified).HasColumnName("Project_DateModified");
+                entity.Property(e => e.DateCreated).HasColumnName("Application_DateCreated");
+                entity.Property(e => e.DateModified).HasColumnName("Application_DateModified");
+                entity.HasOne(e => e.ApplicationType).WithMany(e => e.Applications);
             });
         }
 
-        private void MapProjectEntity(ModelBuilder modelBuilder)
+        private static void MapProjectEntity(ModelBuilder modelBuilder)
         {
             // tblProject => Model.Project
             modelBuilder.Entity<Project>().ToTable("tblProject", "dbo");
@@ -73,6 +78,7 @@ namespace Lanner.Backbone.Data.Context
                 entity.Property(e => e.IsDeadlineReachedNotificationSent).HasColumnName("Project_DeadlineReachedNotificationSent");
                 entity.Property(e => e.DateCreated).HasColumnName("Project_DateCreated");
                 entity.Property(e => e.DateModified).HasColumnName("Project_DateModified");
+                entity.HasOne(e => e.Application).WithMany(e => e.Projects);
             });
         }
 

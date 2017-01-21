@@ -1,0 +1,2 @@
+- Add referential integrity
+- Clean up data model, remove Tablename prefix

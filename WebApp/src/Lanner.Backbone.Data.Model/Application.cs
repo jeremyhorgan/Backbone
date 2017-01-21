@@ -15,7 +15,7 @@ namespace Lanner.Backbone.Data.Model
         public bool IsTemplate { get; set; }
         public bool IsPublished { get; set; }
         public bool IsArchived { get; set; }
-        public byte?[] ModelFile { get; set; }
+        public byte[] ModelFile { get; set; }
         public string ValidationScript { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }

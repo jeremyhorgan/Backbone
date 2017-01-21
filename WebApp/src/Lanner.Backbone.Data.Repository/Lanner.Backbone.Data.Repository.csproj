@@ -174,10 +174,14 @@
   <ItemGroup>
     <Compile Include="ApplicationRepository.cs" />
     <Compile Include="IApplicationRepository.cs" />
+    <Compile Include="IProjectRepository.cs" />
     <Compile Include="IRepository.cs" />
+    <Compile Include="IUnitOfWork.cs" />
     <Compile Include="ProjectRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
+    <Compile Include="RepositoryException.cs" />
+    <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Lanner.Backbone.Data.Model\Lanner.Backbone.Data.Model.csproj">
